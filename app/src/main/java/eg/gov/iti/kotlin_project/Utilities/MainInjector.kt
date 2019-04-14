@@ -6,6 +6,6 @@ import eg.gov.iti.kotlin_project.ViewModels.MainViewModelFactory
 
 object MainInjector {
     fun provideMainViewModelFactory() : MainViewModelFactory {
-        return MainViewModelFactory(AthletesRepository.getSharedInstance(Athlete("Amr", "Hopa", "Yala")))
+        return MainViewModelFactory(AthletesRepository.getSharedInstance(RetrofitBringer()))
     }
 }

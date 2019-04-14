@@ -7,7 +7,5 @@ import eg.gov.iti.kotlin_project.Repository.AthletesRepository
 
 class MainViewModel (private val athletesRepository: AthletesRepository)
     : ViewModel() {
-    fun getAthletes(): AthleteList? {
-        return athletesRepository.getAthletes()
-    }
+    fun getAthletes() = athletesRepository.getAthletes()
 }
