@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import eg.gov.iti.kotlin_project.Models.Athlete
 import eg.gov.iti.kotlin_project.Models.AthleteList
 import eg.gov.iti.kotlin_project.R
@@ -45,7 +46,7 @@ class MainViewAdapter(private val context: Context, private val athletes: List<A
         // - replace the contents of the view with that element
         holder.nameTextView.text = athletes!!.get(position).name
 //        Log.e("Amr", "${athletes.get(position).image} hopaaaaaaaaaaaaaaaaaaaaaaaaa")
-        Glide.with(context).load(athletes.get(position).image).into(holder.imageView)
+        Glide.with(context).load(athletes.get(position).image).apply(RequestOptions().override(350, 500)).into(holder.imageView)
 //        holder.imageTextView?.text = athletes.get(position).image
         holder.briefTextView.text = athletes.get(position).brief
     }
