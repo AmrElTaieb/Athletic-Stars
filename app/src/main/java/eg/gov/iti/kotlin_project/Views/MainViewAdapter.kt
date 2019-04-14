@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import eg.gov.iti.kotlin_project.Models.Athlete
+import eg.gov.iti.kotlin_project.Models.AthleteList
 import eg.gov.iti.kotlin_project.R
 
-class MainViewAdapter(private val athletes: ArrayList<Athlete>) :
+class MainViewAdapter(private val athletes: AthleteList?) :
     RecyclerView.Adapter<MainViewAdapter.MyViewHolder>() {
 
     // Provide a reference to the views for each data item
@@ -38,11 +39,11 @@ class MainViewAdapter(private val athletes: ArrayList<Athlete>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.nameTextView?.text = athletes[position].name
-        holder.imageTextView?.text = athletes[position].image
-        holder.briefTextView?.text = athletes[position].brief
+        holder.nameTextView?.text = athletes!!.getAthlete(position).name
+        holder.imageTextView?.text = athletes.getAthlete(position).image
+        holder.briefTextView?.text = athletes.getAthlete(position).brief
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = athletes.size
+    override fun getItemCount() = athletes!!.getAthletes().size
 }

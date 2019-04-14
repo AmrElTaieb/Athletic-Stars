@@ -1,6 +1,7 @@
 package eg.gov.iti.kotlin_project.Repository
 
 import eg.gov.iti.kotlin_project.Models.Athlete
+import eg.gov.iti.kotlin_project.Models.AthleteList
 
 class AthletesRepository private constructor(private val athlete: Athlete){
     companion object {
@@ -12,9 +13,8 @@ class AthletesRepository private constructor(private val athlete: Athlete){
                 }
     }
 
-    fun getAthletes(): ArrayList<Athlete> {
-        var list: ArrayList<Athlete> = ArrayList()
-        list.add(this.athlete)
+    fun getAthletes(): AthleteList? {
+        var list: AthleteList? = null;
         return list
     }
 }
