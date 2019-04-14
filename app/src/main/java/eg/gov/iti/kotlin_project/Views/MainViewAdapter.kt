@@ -1,6 +1,8 @@
 package eg.gov.iti.kotlin_project.Views
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -49,6 +51,15 @@ class MainViewAdapter(private val context: Context, private val athletes: List<A
         Glide.with(context).load(athletes.get(position).image).apply(RequestOptions().override(350, 500)).into(holder.imageView)
 //        holder.imageTextView?.text = athletes.get(position).image
         holder.briefTextView.text = athletes.get(position).brief
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, DetailsActivity::class.java).apply {
+                putExtra("name", holder.nameTextView.text.toString())
+                putExtra("image", athletes.get(position).image)
+                putExtra("brief", holder.briefTextView.text.toString())
+            }
+            context.startActivity(intent)
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
