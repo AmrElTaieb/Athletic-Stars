@@ -1,15 +1,19 @@
 package eg.gov.iti.kotlin_project.Views
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import eg.gov.iti.kotlin_project.Models.Athlete
 import eg.gov.iti.kotlin_project.Models.AthleteList
 import eg.gov.iti.kotlin_project.R
 
-class MainViewAdapter(private val athletes: List<Athlete>?) :
+class MainViewAdapter(private val context: Context, private val athletes: List<Athlete>?) :
     RecyclerView.Adapter<MainViewAdapter.MyViewHolder>() {
 
     // Provide a reference to the views for each data item
@@ -20,7 +24,7 @@ class MainViewAdapter(private val athletes: List<Athlete>?) :
         : RecyclerView.ViewHolder(convertView)
     {
         var nameTextView: TextView? = convertView.findViewById(R.id.name_text_view)
-        var imageTextView: TextView? = convertView.findViewById(R.id.image_text_view)
+        var imageView: ImageView = convertView.findViewById(R.id.image_view)
         var briefTextView: TextView? = convertView.findViewById(R.id.brief_text_view)
     }
 
@@ -40,7 +44,9 @@ class MainViewAdapter(private val athletes: List<Athlete>?) :
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.nameTextView?.text = athletes!!.get(position).name
-        holder.imageTextView?.text = athletes.get(position).image
+//        Log.e("Amr", "${athletes.get(position).image} hopaaaaaaaaaaaaaaaaaaaaaaaaa")
+        Glide.with(context).load(athletes.get(position).image).into(holder.imageView)
+//        holder.imageTextView?.text = athletes.get(position).image
         holder.briefTextView?.text = athletes.get(position).brief
     }
 
