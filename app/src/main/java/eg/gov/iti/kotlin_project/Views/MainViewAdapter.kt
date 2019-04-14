@@ -23,9 +23,9 @@ class MainViewAdapter(private val context: Context, private val athletes: List<A
     class MyViewHolder(val convertView: View)
         : RecyclerView.ViewHolder(convertView)
     {
-        var nameTextView: TextView? = convertView.findViewById(R.id.name_text_view)
+        var nameTextView: TextView = convertView.findViewById(R.id.name_text_view)
         var imageView: ImageView = convertView.findViewById(R.id.image_view)
-        var briefTextView: TextView? = convertView.findViewById(R.id.brief_text_view)
+        var briefTextView: TextView = convertView.findViewById(R.id.brief_text_view)
     }
 
     // Create new views (invoked by the layout manager)
@@ -43,11 +43,11 @@ class MainViewAdapter(private val context: Context, private val athletes: List<A
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.nameTextView?.text = athletes!!.get(position).name
+        holder.nameTextView.text = athletes!!.get(position).name
 //        Log.e("Amr", "${athletes.get(position).image} hopaaaaaaaaaaaaaaaaaaaaaaaaa")
         Glide.with(context).load(athletes.get(position).image).into(holder.imageView)
 //        holder.imageTextView?.text = athletes.get(position).image
-        holder.briefTextView?.text = athletes.get(position).brief
+        holder.briefTextView.text = athletes.get(position).brief
     }
 
     // Return the size of your dataset (invoked by the layout manager)

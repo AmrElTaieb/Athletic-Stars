@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.getAthletes().observe(this, Observer { athleteList ->
             this.athleteList = athleteList
 
-            viewManager = LinearLayoutManager(this)
-            viewAdapter = MainViewAdapter(this, athleteList)
+            viewManager = LinearLayoutManager(this@MainActivity)
+            viewAdapter = MainViewAdapter(this@MainActivity, athleteList)
 
             recyclerView = findViewById<RecyclerView>(R.id.main_recycler_view).apply {
                 setHasFixedSize(true)
