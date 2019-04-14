@@ -11,4 +11,10 @@ class AthletesRepository private constructor(private val athlete: Athlete){
                     sharedInstance ?: AthletesRepository(athlete).also { sharedInstance = it }
                 }
     }
+
+    fun getAthletes(): ArrayList<Athlete> {
+        var list: ArrayList<Athlete> = ArrayList()
+        list.add(this.athlete)
+        return list
+    }
 }

@@ -4,11 +4,17 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import eg.gov.iti.kotlin_project.R
 import eg.gov.iti.kotlin_project.Utilities.MainInjector
 import eg.gov.iti.kotlin_project.ViewModels.MainViewModel
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,5 +26,14 @@ class MainActivity : AppCompatActivity() {
     {
         val mainFactory = MainInjector.provideMainViewModelFactory()
         val mainViewModel = ViewModelProviders.of(this, mainFactory).get(MainViewModel::class.java)
+
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = MainViewAdapter(mainViewModel.getAthletes())
+
+        recyclerView = findViewById<RecyclerView>(R.id.main_recycler_view).apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
     }
 }
