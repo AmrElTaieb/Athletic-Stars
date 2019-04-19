@@ -48,7 +48,7 @@ class MainViewAdapter(private val context: Context, private val athletes: List<A
         // - replace the contents of the view with that element
         holder.nameTextView.text = athletes!!.get(position).name
 //        Log.e("Amr", "${athletes.get(position).image} hopaaaaaaaaaaaaaaaaaaaaaaaaa")
-        Glide.with(context).load(athletes.get(position).image).apply(RequestOptions().override(350, 500)).into(holder.imageView)
+        Glide.with(context).load(athletes.get(position).image).apply(RequestOptions().override(250, 300)).into(holder.imageView)
 //        holder.imageTextView?.text = athletes.get(position).image
         holder.briefTextView.text = athletes.get(position).brief
 
